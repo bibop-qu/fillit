@@ -6,7 +6,7 @@
 /*   By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 16:59:11 by basle-qu          #+#    #+#             */
-/*   Updated: 2015/12/09 17:11:40 by basle-qu         ###   ########.fr       */
+/*   Updated: 2015/12/10 17:44:53 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 #define TOOLS_H
 
 char    **ft_realloc(char **tab, char *line);
+void	ft_error(char *str);
 
 #endif

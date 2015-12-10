@@ -6,11 +6,17 @@
 /*   By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 16:58:57 by basle-qu          #+#    #+#             */
-/*   Updated: 2015/12/09 18:29:31 by basle-qu         ###   ########.fr       */
+/*   Updated: 2015/12/10 17:44:50 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_error(char *str)
+{
+	write(2, str, ft_strlen(str));
+	exit(0);
+}
 
 void	free_tab(char **tab)
 {
