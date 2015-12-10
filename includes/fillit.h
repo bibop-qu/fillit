@@ -23,7 +23,14 @@ typedef struct		s_piece
 	int				x_pos;
 	int				y_pos;
 	struct s_piece *next;
-	
+	struct s_piece *prev;
 }					t_piece;
+
+typedef struct		s_head
+{
+	unsigned int	size_max;
+	char			lettre;
+	t_piece			begin;
+}					t_head;
 
 #endif
