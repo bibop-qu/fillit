@@ -6,12 +6,16 @@
 /*   By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 17:32:04 by basle-qu          #+#    #+#             */
-/*   Updated: 2015/12/09 18:01:14 by basle-qu         ###   ########.fr       */
+/*   Updated: 2015/12/10 12:23:36 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
+
+# include <fcntl.h>
+# include "libft.h"
+# include "get_next_line.h"
 
 typedef struct		s_piece
 {
@@ -22,4 +26,4 @@ typedef struct		s_piece
 	
 }					t_piece;
 
-#ENDIF
+#endif

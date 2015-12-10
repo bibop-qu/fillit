@@ -6,35 +6,14 @@
 /*   By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 15:47:36 by basle-qu          #+#    #+#             */
-/*   Updated: 2015/12/09 18:30:38 by basle-qu         ###   ########.fr       */
+/*   Updated: 2015/12/10 12:49:16 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 #include "error.h"
 #include "tools.h"
-#include "get_next_line.h"
-#include <fcntl.h>
-
-char	**ft_init_tetri(char *av)
-{
-	int fd;
-	char **tab;
-	char *line;
-
-	tab = NULL;
-	line = NULL;
-	fd = open(av, O_RDONLY);
-	if (fd == -1)
-		ft_open_file();
-	while (get_next_line(fd, &line) == 1)
-	{
-		tab = ft_realloc(tab, line);
-		free(line);
-	}
-	close(fd);
-	return (tab);
-}
+#include "init.h"
 
 int		main(int ac, char **av)
 {

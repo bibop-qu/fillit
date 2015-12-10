@@ -6,16 +6,18 @@
 #    By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/09 15:10:33 by basle-qu          #+#    #+#              #
-#    Updated: 2015/12/09 17:00:42 by basle-qu         ###   ########.fr        #
+#    Updated: 2015/12/10 12:29:41 by basle-qu         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 SRCS = 	srcs/main.c \
 		srcs/error.c \
-		srcs/tools.c
+		srcs/tools.c \
+		srcs/init.c
 OBJS = 	main.o \
 		error.o \
-		tools.o
+		tools.o \
+		init.o
 NAME = fillit
 CFLAG = -Wall -Wextra -Werror
 
