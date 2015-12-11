@@ -6,13 +6,15 @@
 /*   By: cbossard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 17:41:55 by cbossard          #+#    #+#             */
-/*   Updated: 2015/12/10 17:41:56 by cbossard         ###   ########.fr       */
+/*   Updated: 2015/12/11 15:46:25 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINT_H
 # define PRINT_H
 
+
+void	debugg_print_maggle_just_form(t_head *chain);
 char	**creat_tab(int size);
 void	print(t_head *chain);
 

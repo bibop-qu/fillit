@@ -6,7 +6,7 @@
 #    By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/09 15:10:33 by basle-qu          #+#    #+#              #
-#    Updated: 2015/12/11 14:51:38 by basle-qu         ###   ########.fr        #
+#    Updated: 2015/12/11 15:47:16 by basle-qu         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,14 +16,16 @@ SRCS = 	srcs/main.c \
 		srcs/verif.c \
 		srcs/chain.c \
 		srcs/piece_tools.c \
-		srcs/head_tools.c
+		srcs/head_tools.c \
+		srcs/print.c
 OBJS = 	main.o \
 		tools.o \
 		init.o \
 		verif.o \
 		chain.o \
 		piece_tools.o \
-		head_tools.o
+		head_tools.o \
+		print.o
 NAME = fillit
 CFLAG = -Wall -Wextra -Werror
 

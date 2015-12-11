@@ -6,7 +6,7 @@
 /*   By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 17:32:04 by basle-qu          #+#    #+#             */
-/*   Updated: 2015/12/11 14:51:12 by basle-qu         ###   ########.fr       */
+/*   Updated: 2015/12/11 15:48:10 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct		s_piece
 
 typedef struct		s_head
 {
-	unsigned int	size_max;
+	int				size_max;
 	char			lettre;
 	t_piece			*begin;
 }					t_head;
@@ -38,5 +38,6 @@ typedef struct		s_head
 # include "head_tools.h"
 # include "verif.h"
 # include "init.h"
+#include "print.h"
 
 #endif
