@@ -6,18 +6,24 @@
 #    By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/09 15:10:33 by basle-qu          #+#    #+#              #
-#    Updated: 2015/12/10 17:45:28 by basle-qu         ###   ########.fr        #
+#    Updated: 2015/12/11 14:51:38 by basle-qu         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 SRCS = 	srcs/main.c \
 		srcs/tools.c \
 		srcs/init.c \
-		srcs/verif.c
+		srcs/verif.c \
+		srcs/chain.c \
+		srcs/piece_tools.c \
+		srcs/head_tools.c
 OBJS = 	main.o \
 		tools.o \
 		init.o \
-		verif.o
+		verif.o \
+		chain.o \
+		piece_tools.o \
+		head_tools.o
 NAME = fillit
 CFLAG = -Wall -Wextra -Werror
 

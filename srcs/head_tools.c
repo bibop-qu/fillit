@@ -6,18 +6,17 @@
 /*   By: cbossard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 12:32:48 by cbossard          #+#    #+#             */
-/*   Updated: 2015/12/10 12:32:48 by cbossard         ###   ########.fr       */
+/*   Updated: 2015/12/11 14:29:30 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "fillit.h"
 
 t_head	*creat_head()
 {
 	t_head	*news;
 
-	news = (t_head)malloc(sizeof(t_head));
+	news = (t_head*)malloc(sizeof(t_head));
 	if (!news)
 	{
 		write(2, "ERROR: failed to alloc memorie:1\n", 33);

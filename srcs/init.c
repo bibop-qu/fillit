@@ -6,7 +6,7 @@
 /*   By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 12:25:06 by basle-qu          #+#    #+#             */
-/*   Updated: 2015/12/10 17:43:26 by basle-qu         ###   ########.fr       */
+/*   Updated: 2015/12/11 14:11:25 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char	**ft_init_tetri(char *av)
 		ft_error("File can't be oppen.\n");
 	while (get_next_line(fd, &line) == 1)
 	{
-		tab = ft_realloc(tab, line);
+		if (ft_strcmp(line, "\0"))
+			tab = ft_realloc(tab, line);
 		free(line);
 	}
 	close(fd);
