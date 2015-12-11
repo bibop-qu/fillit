@@ -39,6 +39,18 @@ char	**creat_tab(int size)
 	return (news);
 }
 
+void	print_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		ft_putendl(tab[i]);
+		i++;
+	}
+}
+
 void	print(t_head *chain)
 {
 	int		i;
@@ -61,5 +73,18 @@ void	print(t_head *chain)
 		}
 		tmp = tmp->next;
 		chain->lettre += 1;
+	}
+}
+
+void	debugg_print_maggle_just_form(t_head *chain)
+{
+	t_piece *tmp;
+
+	tmp = chain->begin;
+	while(tmp)
+	{
+		print_tab(tmp->form);
+		tmp = tmp->next;
+		write(1, "\n", 1);
 	}
 }
