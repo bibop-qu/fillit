@@ -6,11 +6,59 @@
 /*   By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 13:40:25 by basle-qu          #+#    #+#             */
-/*   Updated: 2015/12/11 15:34:24 by basle-qu         ###   ########.fr       */
+/*   Updated: 2015/12/11 17:04:24 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+void	diese(char **form, int j, int i)
+{
+
+}
+
+int		verif_form(char **form)
+{
+	int		i;
+	int		j;
+	int		nbr;
+
+	j = 0;
+	nbr = 0;
+	while (form[j])
+	{
+		i = 0;
+		nbr = 0;
+		while (form[j][i])
+		{
+			if (form[i][j] == '#')
+			{
+				
+				if (diese(form, j, i) == 0)
+					return (0);
+				nbr++;
+				if (nbr > 4)
+					return (0);
+			}
+			i++;
+		}
+		j++;
+	}
+}
+
+int		ft_verif_form(t_head *chain)
+{
+	t_piece *tmp;
+
+	tmp = chain->begin;
+	while (tmp->form)
+	{
+		if (verif_form(tmp->form) == 0)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
 
 int		verif_line(char *line)
 {
