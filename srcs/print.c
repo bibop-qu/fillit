@@ -20,17 +20,14 @@ char	**creat_tab(int size)
 
 	news = (char**)malloc(sizeof(char*) * size + 1);
 	if (!news)
-		return (0);
+		ft_error("ERROR: fail alloc memorie\n");
 	i = -1;
 	news[size] = 0;
 	while (++i < size)
 	{
 		news[i] =(char*)malloc(sizeof(char) * size + 1);
 		if (!news[i])
-		{
-			write(2, "ERROR: failed to alloc memorie\n", 32);
-			return (0);
-		}
+			ft_error("ERROR: fail alloc memorie\n");
 		j = -1;
 		while (++j < size)
 			news[i][j] = '.';
@@ -58,18 +55,17 @@ void	print(t_head *chain)
 	char	**tab;
 	t_piece	*tmp;
 
-	if (tab = creat_tab(chain->max_size))
-		return (0);
+	tab = creat_tab(chain->size_max);
 	tmp = chain->begin;
 	while (tmp)
 	{
 		i = -1;
-		while (++i < 4 && i + tmp->x_pos < chain->max_size)
+		while (++i < 4 && i + tmp->x_pos < chain->size_max)
 		{
 			j = -1;
-			while (++j < 4 && j + tmp->y_pos < chain->max_size)
+			while (++j < 4 && j + tmp->y_pos < chain->size_max)
 				if (tmp->form[i][j] != '.')
-					tab[i + x_pos][j + y_pos] = chain->lettre + 48;
+					tab[i + tmp->x_pos][j + tmp->y_pos] = chain->lettre + 48;
 		}
 		tmp = tmp->next;
 		chain->lettre += 1;

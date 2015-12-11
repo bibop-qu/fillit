@@ -81,24 +81,12 @@ t_piece	*creat_piece(t_piece *prev, char **form)
 
 void	free_piece(t_piece *piece)
 {
-	char	i;
-	char	j;
 
 	if (piece)
 	{
 		piece->next = 0;
 		piece->prev = 0;
-		i = 0;
-		while (i < 4)
-		{
-			j = 0;
-			while (j < 4)
-			{
-				piece->form = 0;
-				j ++;
-			}
-			i++;
-		}
+		free_tab(piece->form);
 		free(piece);
 	}
 }
