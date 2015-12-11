@@ -12,7 +12,35 @@
 
 #include "fillit.h"
 
-t_piece	*creat_piece(t_piece *prev, char **form, int x, int y)
+void	init_pos(t_piece *piece)
+{
+	int	i;
+	int j;
+
+	i = 3;
+	piece->x_pos = -4;
+	piece->y_pos = -4;
+	while (i >= 0)
+	{
+		if (ft_strchr(piece->form[i], '#'))
+			piece->y_pos = -i;
+		i--;
+	}
+	i = 3
+	while (i >= 0)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			if (piece->form[j][i] == '#')
+				piece->x_pos = -i;
+			j++;
+		}
+		i--;
+	}
+}
+
+t_piece	*creat_piece(t_piece *prev, char **form)
 {
 	t_piece	*news;
 	char	i;
@@ -20,15 +48,10 @@ t_piece	*creat_piece(t_piece *prev, char **form, int x, int y)
 
 	news = (t_piece)malloc(sizeof(t_piece));
 	if (!news)
-	{
-		write(2, "ERROR: failed to alloc memorie:3\n", 33);
-		return (0);
-	}
+		ft_error("ERROR: failed to alloc memorie\n");
 	j = 0;
 	news->prev = prev;
 	news->next = 0;
-	news->x_pos = x;
-	news->y_pos = y;
 	while (j < 4)
 	{
 		i = 0;
@@ -42,7 +65,7 @@ t_piece	*creat_piece(t_piece *prev, char **form, int x, int y)
 	return (news);
 }
 
-void	*free_piece(t_piece *piece)
+void	free_piece(t_piece *piece)
 {
 	char	i;
 	char	j;
