@@ -18,6 +18,8 @@ typedef struct		s_piece
 	char			**form;
 	int				x_pos;
 	int				y_pos;
+	int				x_size;
+	int				y_size;
 	struct s_piece *next;
 	struct s_piece *prev;
 }					t_piece;

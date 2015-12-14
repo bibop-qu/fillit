@@ -16,5 +16,6 @@
 void	free_tab(char **tab);
 char    **ft_realloc(char **tab, char *line);
 void	ft_error(char *str);
+char    **creat_tab(int size);
 
 #endif

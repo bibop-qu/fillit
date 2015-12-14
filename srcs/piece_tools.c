@@ -12,18 +12,25 @@
 
 #include "fillit.h"
 
+void	cp_pos(t_piece *piece, int x, int y)
+{
+	piece->x_pos = x;
+	piece->y_pos = y;
+}
+
 void	init_pos(t_piece *piece)
 {
 	int	i;
 	int j;
 
 	i = 3;
-	piece->x_pos = -4;
-	piece->y_pos = -4;
 	while (i >= 0)
 	{
 		if (ft_strchr(piece->form[i], '#'))
+		{
+			piece->y_size++;
 			piece->y_pos = -i;
+		}
 		i--;
 	}
 	i = 3;
@@ -33,7 +40,11 @@ void	init_pos(t_piece *piece)
 		while (j < 4)
 		{
 			if (piece->form[j][i] == '#')
+			{
+				piece->x_size++;
 				piece->x_pos = -i;
+				j = 4;
+			}
 			j++;
 		}
 		i--;
@@ -76,6 +87,11 @@ t_piece	*creat_piece(t_piece *prev, char **form)
 	news->prev = prev;
 	news->next = 0;
 	creat_form(news, form);
+	news->x_pos = -4;
+	news->y_pos = -4;
+	news->y_size = 0;
+	news->x_size = 0;
+	init_pos(news);
 	return (news);
 }
 

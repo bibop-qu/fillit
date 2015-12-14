@@ -12,6 +12,23 @@
 
 #include "fillit.h"
 
+int		chain_len(t_head *chain)
+{
+	int		size;
+	t_piece	*tmp;
+
+	if (!chain || chain->begin)
+		return (0);
+	tmp = chain->begin;
+	size = 1;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		size++;
+	}
+	return (size);
+}
+
 t_head	*creat_chain(char **tetri)
 {
 	int		i;
@@ -46,16 +63,17 @@ t_head	*cp_chain(t_head *chain)
 	if (!chain->begin)
 		return (news);
 	prev = 0;
-	actu = chain->begin;
-	news->begin = creat_piece(0, actu->form);
+	actu = chain->begin->next;
+	news->begin = creat_piece(0, chain->begin->form);
+	cp_pos(news->begin, chain->begin->x_pos, chain->begin->y_pos);
 	tmp = news->begin;
 	while (actu)
 	{
 		prev = tmp;
 		tmp = creat_piece(prev, actu->form);
+		cp_pos(tmp, actu->x_pos, actu->y_pos);
 		prev->next = tmp;
 		actu = actu->next;
-		tmp = tmp->next;
 	}
 	return (news);
 }

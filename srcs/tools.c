@@ -12,6 +12,31 @@
 
 #include "libft.h"
 
+char    **creat_tab(int size)
+{
+    char    **tab;
+    int     i;
+    int     j;
+
+    tab = (char**)malloc(szeof(char*) * size + 1);
+    if (!tab)
+        return (0);
+    tab[size] = 0;
+    i = 0;
+    while (i < size)
+    {
+        tab[i] = (char*)malloc(sizeof(char) * size + 1);
+        if (!tab[i])
+            return (0);
+        j = -1;
+        while (++j < size)
+            tab[i][j] = '.';
+        tab[i][j] = 0;
+        i++;
+    }
+    return (tab);
+}
+
 void	ft_error(char *str)
 {
 	write(2, str, ft_strlen(str));
