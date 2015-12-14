@@ -79,6 +79,11 @@ void	debugg_print_maggle_just_form(t_head *chain)
 	tmp = chain->begin;
 	while(tmp)
 	{
+		write(1, "Y: ", 3);
+		ft_putnbr(tmp->y_pos);
+		write(1, " X: ", 4);
+		ft_putnbr(tmp->x_pos);
+		write(1, "\n", 1);
 		print_tab(tmp->form);
 		tmp = tmp->next;
 		write(1, "\n", 1);
