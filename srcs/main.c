@@ -6,7 +6,7 @@
 /*   By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 15:47:36 by basle-qu          #+#    #+#             */
-/*   Updated: 2015/12/11 14:48:38 by basle-qu         ###   ########.fr       */
+/*   Updated: 2015/12/14 14:16:37 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ t_head	*read_file(char *av)
 	if (ft_verif_tetri(tetri) == 0)
 		ft_error("Not a valid file!!\n");
 	chain = creat_chain(tetri);
-	ft_putendl("lol");
-	if (ft_verif_form(chain) == 0)
-		ft_error("Form not valid!!\n");
+/*	if (ft_verif_form(chain) == 0)
+	ft_error("Form not valid!!\n");*/
 	free_tab(tetri);
 	return (chain);
 }

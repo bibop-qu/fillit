@@ -6,7 +6,7 @@
 /*   By: cbossard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 14:23:13 by cbossard          #+#    #+#             */
-/*   Updated: 2015/12/11 14:46:45 by basle-qu         ###   ########.fr       */
+/*   Updated: 2015/12/14 13:55:31 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_head	*creat_chain(char **tetri)
 
 	i = 4;
 	tmp = NULL;
-	chain = NULL;
+	chain = creat_head();
 	chain->begin = creat_piece(NULL, tetri);
 	tmp = chain->begin;
 	while (tetri[i])

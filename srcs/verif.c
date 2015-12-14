@@ -6,7 +6,7 @@
 /*   By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 13:40:25 by basle-qu          #+#    #+#             */
-/*   Updated: 2015/12/11 17:04:24 by basle-qu         ###   ########.fr       */
+/*   Updated: 2015/12/14 14:16:22 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int		diese(char **form, int j, int i)
 		nbr++;
 	if (!form[j][i + 1] || form[j][i + 1] == '.')
 		nbr++;
-	if (!form[j + 1][i] || form[j + 1][i] == '.')
-		nbr++;
 	if (!form[j][i - 1] || form[j][i - 1] == '.')
+		nbr++;
+	if (!form[j + 1][i] || form[j + 1][i] == '.')
 		nbr++;
 	return (nbr);
 }
