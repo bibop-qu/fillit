@@ -12,9 +12,20 @@
 
 #include "fillit.h"
 
-void	diese(char **form, int j, int i)
+int		diese(char **form, int j, int i)
 {
+	int	nbr;
 
+	nbr = 0;
+	if (!form[j - 1][i] || form[j - 1][i] == '.')
+		nbr++;
+	if (!form[j][i + 1] || form[j][i + 1] == '.')
+		nbr++;
+	if (!form[j + 1][i] || form[j + 1][i] == '.')
+		nbr++;
+	if (!form[j][i - 1] || form[j][i - 1] == '.')
+		nbr++;
+	return (nbr);
 }
 
 int		verif_form(char **form)
@@ -28,22 +39,22 @@ int		verif_form(char **form)
 	while (form[j])
 	{
 		i = 0;
-		nbr = 0;
 		while (form[j][i])
 		{
 			if (form[i][j] == '#')
 			{
 				
-				if (diese(form, j, i) == 0)
+				if (diese(form, j, i) == 4)
 					return (0);
 				nbr++;
-				if (nbr > 4)
+				if (nbr > 3)
 					return (0);
 			}
 			i++;
 		}
 		j++;
 	}
+	return (1);
 }
 
 int		ft_verif_form(t_head *chain)

@@ -19,9 +19,12 @@ t_head	*read_file(char *av)
 
 	chain = NULL;
 	tetri = ft_init_tetri(av);
-/*	if (ft_verif_tetri(tetri) == 0)
-		ft_error("Not a valid file!!\n");*/
+	if (ft_verif_tetri(tetri) == 0)
+		ft_error("Not a valid file!!\n");
 	chain = creat_chain(tetri);
+	ft_putendl("lol");
+	if (ft_verif_form(chain) == 0)
+		ft_error("Form not valid!!\n");
 	free_tab(tetri);
 	return (chain);
 }
