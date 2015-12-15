@@ -24,7 +24,6 @@ t_head	*read_file(char *av)
 	chain = creat_chain(tetri);
 	if (ft_verif_form(chain) == 0)
 		ft_error("Form not valid!!\n");
-	ft_putendl("YOLO");
 	free_tab(tetri);
 	return (chain);
 }
@@ -32,12 +31,16 @@ t_head	*read_file(char *av)
 int		main(int ac, char **av)
 {
 	t_head	*chain;
+	t_head	*ref;
 
 	chain = NULL;
+	ref = NULL;
 	if (ac != 2)
 		ft_error("Usage: ./fillit ARG\nWhere ARG is a valid file\n");
 	chain = read_file(av[1]);
-	debugg_print_maggle_just_form(chain);
+//	debugg_print_maggle_just_form(chain);
+	ref = solve(chain);
+	print(ref);
 	ft_putendl("Hello World!");
 	return (0);
 }

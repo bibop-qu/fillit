@@ -18,7 +18,8 @@ SRCS = 	srcs/main.c \
 		srcs/piece_tools.c \
 		srcs/head_tools.c \
 		srcs/print.c \
-		srcs/verif_form.c
+		srcs/verif_form.c \
+		srcs/solve.c
 OBJS = 	main.o \
 		tools.o \
 		init.o \
@@ -27,7 +28,8 @@ OBJS = 	main.o \
 		piece_tools.o \
 		head_tools.o \
 		print.o \
-		verif_form.o
+		verif_form.o \
+		solve.o
 NAME = fillit
 CFLAG = -Wall -Wextra -Werror
 

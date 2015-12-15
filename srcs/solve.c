@@ -14,6 +14,7 @@
 
 int	complete_tab(char **tab, t_piece *p)
 {
+//	ft_putendl("COMPLETE_TAB");
 	int	i;
 	int	j;
 	int	size;
@@ -25,46 +26,52 @@ int	complete_tab(char **tab, t_piece *p)
 	while (i < 4)
 	{
 		j = 0;
-		while (j < 4)
-		{
-			if (p->form[i][j] == '#' && tab[p->y_pos + i][p->x_pos + j] == '#')
-				return (0);
-			if (p->form[i][j] == '#')
-				tab[p->y_pos + i][p->x_pos + j] = '#';
-			j++;
-		}
+		if (ft_strchr(p->form[i], '#'))
+			while (j < 4)
+			{
+				if (p->form[i][j] == '#' && tab[p->y_pos + i][p->x_pos + j] == '#')
+					return (0);
+				if (p->form[i][j] == '#')
+					tab[p->y_pos + i][p->x_pos + j] = '#';
+				j++;
+			}
 		i++;
 	}
+//	ft_putendl("WHALALALALALALA");
 	return (1);
 }
 
 int		verif_tab(char **tab, t_piece *first)
 {
+//	ft_putendl("VERIF_TAB");
 	while (first)
 	{
 		if (!complete_tab(tab, first))
 			return (0);
 		first = first->prev;
 	}
-	return (1)
+//	ft_putendl("WHOLOLOLOLOLOLO");
+	return (1);
 }
 
 char	**result(t_head * chain, t_piece *piece)
 {
+//	ft_putendl("RESULT");
 	char	**tab;
-	t_piece	*tmp;
 
 	tab = creat_tab(chain->size_max);
-	if (!verif_tab(tab, tmp))
+	if (!verif_tab(tab, piece))
 	{
 		free_tab(tab);
 		return (0);
 	}
+//	ft_putendl("WHULULULULULULULU");
 	return (tab);
 }
 
 char	**to_do_the_coffe(t_head *c, t_piece *p)
 {
+//	ft_putendl("COFEE");
 	int		x_init;
 	int		y_init;
 	char	**tab;
@@ -92,7 +99,10 @@ char	**to_do_the_coffe(t_head *c, t_piece *p)
 			}
 			p->x_pos++;
 		}
+		p->y_pos++;
 	}
+	p->y_pos = y_init;
+	p->x_pos = x_init;
 	return (0);
 }
 
@@ -108,10 +118,12 @@ t_head	*solve(t_head *chain)
 	{
 		chain->size_max++;
 		ref = cp_chain(chain);
-		maggle = to_do_the_coffe(chain, ref->next);
+		maggle = to_do_the_coffe(chain, ref->begin);
 		if (!maggle)
 			free_chain(ref);
 	}
+//	ft_putendl("WHILILILILLILILILI");
 	free_tab(maggle);
+//	ft_putendl("WHYLYLYLYLYLYLYLYLY");
 	return (ref);
 }

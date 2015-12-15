@@ -39,13 +39,17 @@ void	print(t_head *chain)
 		while (++i < 4 && i + tmp->x_pos < chain->size_max)
 		{
 			j = -1;
-			while (++j < 4 && j + tmp->y_pos < chain->size_max)
-				if (tmp->form[i][j] != '.')
-					tab[i + tmp->x_pos][j + tmp->y_pos] = chain->lettre + 48;
+			if (ft_strchr(tmp->form[i], '#'))
+				while (++j < 4 && j + tmp->y_pos < chain->size_max)
+				{
+					if (tmp->form[i][j] != '.')
+						tab[i + tmp->y_pos][j + tmp->x_pos] = chain->lettre + 48;
+				}
 		}
 		tmp = tmp->next;
 		chain->lettre += 1;
 	}
+	print_tab(tab);
 }
 
 void	debugg_print_maggle_just_form(t_head *chain)
@@ -59,6 +63,11 @@ void	debugg_print_maggle_just_form(t_head *chain)
 		ft_putnbr(tmp->y_pos);
 		write(1, " X: ", 4);
 		ft_putnbr(tmp->x_pos);
+		write(1, "\n", 1);
+		write(1, "y: ", 3);
+		ft_putnbr(tmp->y_size);
+		write(1, " x: ", 4);
+		ft_putnbr(tmp->x_size);
 		write(1, "\n", 1);
 		print_tab(tmp->form);
 		tmp = tmp->next;

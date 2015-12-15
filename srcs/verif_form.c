@@ -84,6 +84,5 @@ int		ft_verif_form(t_head *chain)
 			return (0);
 		tmp = tmp->next;
 	}
-	free(tmp);
 	return (1);
 }

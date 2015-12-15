@@ -42,5 +42,6 @@ typedef struct		s_head
 # include "init.h"
 # include "print.h"
 # include "verif_form.h"
+# include "solve.h"
 
 #endif
