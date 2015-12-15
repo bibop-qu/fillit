@@ -12,35 +12,34 @@
 
 #include "libft.h"
 
-char    **creat_tab(int size)
-{
-    char    **tab;
-    int     i;
-    int     j;
-
-    tab = (char**)malloc(szeof(char*) * size + 1);
-    if (!tab)
-        return (0);
-    tab[size] = 0;
-    i = 0;
-    while (i < size)
-    {
-        tab[i] = (char*)malloc(sizeof(char) * size + 1);
-        if (!tab[i])
-            return (0);
-        j = -1;
-        while (++j < size)
-            tab[i][j] = '.';
-        tab[i][j] = 0;
-        i++;
-    }
-    return (tab);
-}
-
 void	ft_error(char *str)
 {
 	write(2, str, ft_strlen(str));
 	exit(0);
+}
+
+char	**creat_tab(int size)
+{
+	char	**news;
+	int		i;
+	int		j;
+
+	news = (char**)malloc(sizeof(char*) * size + 1);
+	if (!news)
+		ft_error("ERROR: fail alloc memorie\n");
+	i = -1;
+	news[size] = 0;
+	while (++i < size)
+	{
+		news[i] =(char*)malloc(sizeof(char) * size + 1);
+		if (!news[i])
+			ft_error("ERROR: fail alloc memorie\n");
+		j = -1;
+		while (++j < size)
+			news[i][j] = '.';
+		news[i][j] = 0;
+	}
+	return (news);
 }
 
 void	free_tab(char **tab)

@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-int		diese(char **form, int j, int i)
+int		diese_bis(char **form, int j, int i)
 {
 	int nbr;
 
@@ -25,19 +25,34 @@ int		diese(char **form, int j, int i)
 		nbr++;
 	if (j + 1 > 3 || form[j + 1][i] == '.')
 		nbr++;
-	ft_putnbr(nbr);
-	ft_putchar('\n');
-	if (nbr == 3)
-	{
-		if (j - 1 >= 0 && form[j - 1][i] == '#')
-			nbr += diese(form, j - 1, i);
-		if (i + 1 <= 3 && form[j][i + 1] == '#')
-			nbr += diese(form, j, i + 1);
-		if (i - 1 >= 0 && form[j][i - 1] == '#')
-			nbr += diese(form, j, i - 1);
-		if (j + 1 <= 3 && form[j + 1][i] == '#')
-			nbr += diese(form, j + 1, i);
-	}
+	return (nbr);
+}
+
+int		diese(char **form, int j, int i)
+{
+	int nbr;
+	int	save;
+
+	nbr = 0;
+	save = 0;
+	if (j - 1 < 0 || form[j - 1][i] == '.')
+		nbr++;
+	if (j - 1 >= 0 && save == 0 && form[j - 1][i] == '#')
+		save = diese_bis(form, j - 1, i);
+	if (i + 1 > 3 || form[j][i + 1] == '.')
+		nbr++;
+	if (i + 1 <= 3 && save == 0 && form[j][i + 1] == '#')
+		save = diese_bis(form, j, i + 1);
+	if (i - 1 < 0 || form[j][i - 1] == '.')
+		nbr++;
+	if (i - 1 >= 0 && save == 0 && form[j][i - 1] == '#')
+		save = diese_bis(form, j, i - 1);
+	if (j + 1 > 3 || form[j + 1][i] == '.')
+		nbr++;
+	if (j + 1 <= 3 && save == 0 && form[j + 1][i] == '#')
+		save = diese_bis(form, j + 1, i);
+	if (nbr == 3 && save == 3)
+		return (4);
 	return (nbr);
 }
 

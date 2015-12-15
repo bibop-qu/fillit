@@ -12,30 +12,6 @@
 
 #include "fillit.h"
 
-char	**creat_tab(int size)
-{
-	char	**news;
-	int		i;
-	int		j;
-
-	news = (char**)malloc(sizeof(char*) * size + 1);
-	if (!news)
-		ft_error("ERROR: fail alloc memorie\n");
-	i = -1;
-	news[size] = 0;
-	while (++i < size)
-	{
-		news[i] =(char*)malloc(sizeof(char) * size + 1);
-		if (!news[i])
-			ft_error("ERROR: fail alloc memorie\n");
-		j = -1;
-		while (++j < size)
-			news[i][j] = '.';
-		news[i][j] = 0;
-	}
-	return (news);
-}
-
 void	print_tab(char **tab)
 {
 	int	i;
