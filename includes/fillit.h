@@ -40,6 +40,7 @@ typedef struct		s_head
 # include "head_tools.h"
 # include "verif.h"
 # include "init.h"
-#include "print.h"
+# include "print.h"
+# include "verif_form.h"
 
 #endif
