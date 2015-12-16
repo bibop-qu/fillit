@@ -17,5 +17,6 @@
 void	debugg_print_maggle_just_form(t_head *chain);
 char	**creat_tab(int size);
 void	print(t_head *chain);
+void	print_tab(char **tab);
 
 #endif

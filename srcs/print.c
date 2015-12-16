@@ -43,7 +43,7 @@ void	print(t_head *chain)
 				while (++j < 4 && j + tmp->y_pos < chain->size_max)
 				{
 					if (tmp->form[i][j] != '.')
-						tab[i + tmp->y_pos][j + tmp->x_pos] = chain->lettre + 48;
+						tab[i + tmp->y_pos][j + tmp->x_pos] = chain->lettre + 'A';
 				}
 		}
 		tmp = tmp->next;

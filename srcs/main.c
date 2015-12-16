@@ -41,6 +41,6 @@ int		main(int ac, char **av)
 //	debugg_print_maggle_just_form(chain);
 	ref = solve(chain);
 	print(ref);
-	ft_putendl("Hello World!");
+//	ft_putendl("Hello World!");
 	return (0);
 }

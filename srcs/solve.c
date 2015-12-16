@@ -12,6 +12,26 @@
 
 #include "fillit.h"
 
+int penis(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+int verif_col(char **tab, int i)
+{
+	int j;
+
+	j = 0;
+	while (tab[j])
+	{
+		if (tab[j][i] == '#')
+			return (1);
+		j++;
+	}
+	return (0);
+}
+
 int	complete_tab(char **tab, t_piece *p)
 {
 //	ft_putendl("COMPLETE_TAB");
@@ -20,8 +40,9 @@ int	complete_tab(char **tab, t_piece *p)
 	int	size;
 
 	size = ft_strlen(tab[0]);
-	if (p->y_pos + p->y_size > size || p->x_pos + p->x_size > size)
+	if (p->y_pos + p->y_size >= size || p->x_pos + p->x_size >= size)
 		return (0);
+//	print_tab(tab);
 	i = 0;
 	while (i < 4)
 	{
@@ -29,10 +50,30 @@ int	complete_tab(char **tab, t_piece *p)
 		if (ft_strchr(p->form[i], '#'))
 			while (j < 4)
 			{
-				if (p->form[i][j] == '#' && tab[p->y_pos + i][p->x_pos + j] == '#')
-					return (0);
-				if (p->form[i][j] == '#')
+				if (verif_col(p->form, j))
+				{
+/*					ft_putchar('\n');
+					ft_putstr("y_pos: ");
+					ft_putnbr(p->y_pos);
+					ft_putchar('\n');
+					ft_putstr("x_pos: ");
+					ft_putnbr(p->x_pos);
+					ft_putchar('\n');
+					ft_putstr("i: ");
+					ft_putnbr(i);
+					ft_putchar('\n');
+					ft_putstr("j: ");
+					ft_putnbr(j);
+					ft_putchar('\n');
+					ft_putstr("size: ");
+					ft_putnbr(size);
+					ft_putchar('\n');*/
+					if (p->form[i][j] == '#' && (tab[p->y_pos + i][p->x_pos + j] == '#' || tab[p->y_pos + i][p->x_pos + j] == '\0'))
+						return (0);
+//					ft_putendl("bug2");
+//					if (p->form[i][j] == '#')
 					tab[p->y_pos + i][p->x_pos + j] = '#';
+				}
 				j++;
 			}
 		i++;
@@ -62,6 +103,7 @@ char	**result(t_head * chain, t_piece *piece)
 	tab = creat_tab(chain->size_max);
 	if (!verif_tab(tab, piece))
 	{
+//		ft_putendl("bug3");
 		free_tab(tab);
 		return (0);
 	}
@@ -80,10 +122,10 @@ char	**to_do_the_coffe(t_head *c, t_piece *p)
 		return (0);
 	x_init = p->x_pos;
 	y_init = p->y_pos;
-	while (p->y_pos + p->y_size < c->size_max)
+	while (p->y_pos + p->y_size <= c->size_max)
 	{
 		p->x_pos = x_init;
-		while (p->x_pos + p->x_size < c->size_max)
+		while (p->x_pos + p->x_size <= c->size_max)
 		{
 			if (p->next)
 			{
@@ -114,8 +156,10 @@ t_head	*solve(t_head *chain)
 	if (!chain || !chain->begin)
 		return (0);
 	maggle = 0;
+	chain->size_max = 0;
 	while (!maggle)
 	{
+//		ft_putendl("maggle");
 		chain->size_max++;
 		ref = cp_chain(chain);
 		maggle = to_do_the_coffe(chain, ref->begin);
