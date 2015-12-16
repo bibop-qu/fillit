@@ -26,6 +26,7 @@ void	print_tab(char **tab)
 
 void	print(t_head *chain)
 {
+	ft_putchar('\n');
 	int		i;
 	int		j;
 	char	**tab;
@@ -36,11 +37,11 @@ void	print(t_head *chain)
 	while (tmp)
 	{
 		i = -1;
-		while (++i < 4 && i + tmp->x_pos < chain->size_max)
+		while (++i < 4 && i + tmp->y_pos < chain->size_max)
 		{
 			j = -1;
 			if (ft_strchr(tmp->form[i], '#'))
-				while (++j < 4 && j + tmp->y_pos < chain->size_max)
+				while (++j < 4 && j + tmp->x_pos < chain->size_max)
 				{
 					if (tmp->form[i][j] != '.')
 						tab[i + tmp->y_pos][j + tmp->x_pos] = chain->lettre + 'A';

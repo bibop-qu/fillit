@@ -52,6 +52,7 @@ int	complete_tab(char **tab, t_piece *p)
 			{
 				if (verif_col(p->form, j))
 				{
+//					ft_putendl("bug8");
 /*					ft_putchar('\n');
 					ft_putstr("y_pos: ");
 					ft_putnbr(p->y_pos);
@@ -68,11 +69,15 @@ int	complete_tab(char **tab, t_piece *p)
 					ft_putstr("size: ");
 					ft_putnbr(size);
 					ft_putchar('\n');*/
+					if (p->y_pos + i < 0 || p->x_pos + j < 0 || !tab[p->y_pos + i] || p->y_pos + i > size)
+						return (0);
+
 					if (p->form[i][j] == '#' && (tab[p->y_pos + i][p->x_pos + j] == '#' || tab[p->y_pos + i][p->x_pos + j] == '\0'))
 						return (0);
 //					ft_putendl("bug2");
-//					if (p->form[i][j] == '#')
-					tab[p->y_pos + i][p->x_pos + j] = '#';
+					if (p->form[i][j] == '#')
+						tab[p->y_pos + i][p->x_pos + j] = '#';
+//					ft_putendl("bug5");
 				}
 				j++;
 			}
@@ -122,10 +127,10 @@ char	**to_do_the_coffe(t_head *c, t_piece *p)
 		return (0);
 	x_init = p->x_pos;
 	y_init = p->y_pos;
-	while (p->y_pos + p->y_size <= c->size_max)
+	while (p->y_pos + p->y_size < c->size_max)
 	{
 		p->x_pos = x_init;
-		while (p->x_pos + p->x_size <= c->size_max)
+		while (p->x_pos + p->x_size < c->size_max)
 		{
 			if (p->next)
 			{
@@ -159,7 +164,7 @@ t_head	*solve(t_head *chain)
 	chain->size_max = 0;
 	while (!maggle)
 	{
-//		ft_putendl("maggle");
+		ft_putendl("maggle");
 		chain->size_max++;
 		ref = cp_chain(chain);
 		maggle = to_do_the_coffe(chain, ref->begin);
