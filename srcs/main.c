@@ -21,6 +21,7 @@ t_head	*read_file(char *av)
 	tetri = ft_init_tetri(av);
 	if (ft_verif_tetri(tetri) == 0)
 		ft_error("Not a valid file!!\n");
+	tetri = ft_clear_tetri(tetri);
 	chain = creat_chain(tetri);
 	if (ft_verif_form(chain) == 0)
 		ft_error("Form not valid!!\n");

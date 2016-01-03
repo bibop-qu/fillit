@@ -14,5 +14,6 @@
 # define INIT_H
 
 char	**ft_init_tetri(char *av);
+char	**ft_clear_tetri(char **tetri);
 
 #endif

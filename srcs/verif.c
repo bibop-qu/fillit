@@ -52,9 +52,13 @@ int		ft_verif_tetri(char **tetri)
 	i = 0;
 	while (tetri[i])
 	{
-		if (tetri[i] && verif_block(tetri, i) == 0)
+		if (i == 0 && !ft_strcmp(tetri[i], "\0"))
+			return (0);
+		if (!ft_strcmp(tetri[i], "\0"))
+			i++;
+		if (verif_block(tetri, i) == 0)
 			return (0);
 		i += 4;
 	}
-		return (1);
+	return (1);
 }

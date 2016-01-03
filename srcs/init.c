@@ -13,6 +13,23 @@
 #include "fillit.h"
 #include "tools.h"
 
+char	**ft_clear_tetri(char **tetri)
+{
+	int		i;
+	char	**new;
+
+	i = 0;
+	new = NULL;
+	while (tetri[i])
+	{
+		if (ft_strcmp(tetri[i], "\0"))
+			new = ft_realloc(new, tetri[i]);
+		i++;
+	}
+	free_tab(tetri);
+	return (new);
+}
+
 char	**ft_init_tetri(char *av)
 {
 	int fd;
@@ -26,8 +43,7 @@ char	**ft_init_tetri(char *av)
 		ft_error("File can't be oppen.\n");
 	while (get_next_line(fd, &line) == 1)
 	{
-		if (ft_strcmp(line, "\0"))
-			tab = ft_realloc(tab, line);
+		tab = ft_realloc(tab, line);
 		free(line);
 	}
 	close(fd);
