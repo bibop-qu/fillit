@@ -56,6 +56,8 @@ int		ft_verif_tetri(char **tetri)
 			return (0);
 		if (!ft_strcmp(tetri[i], "\0"))
 			i++;
+		else if (i != 0)
+			return (0);
 		if (verif_block(tetri, i) == 0)
 			return (0);
 		i += 4;
