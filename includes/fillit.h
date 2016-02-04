@@ -6,32 +6,12 @@
 /*   By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 17:32:04 by basle-qu          #+#    #+#             */
-/*   Updated: 2016/02/04 15:58:55 by basle-qu         ###   ########.fr       */
+/*   Updated: 2016/02/04 16:07:20 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
-
-typedef struct		s_piece
-{
-	char			**form;
-	int				x_pos;
-	int				y_pos;
-	int				x_size;
-	int				y_size;
-	struct s_piece *next;
-	struct s_piece *prev;
-}					t_piece;
-
-typedef struct		s_head
-{
-	int				size_max;
-	char			lettre;
-	t_piece			*begin;
-}					t_head;
-
-# define BUFF_SIZE 32
 
 # include "libft.h"
 # include "get_next_line.h"
@@ -50,5 +30,25 @@ typedef struct		s_head
 # include "print.h"
 # include "verif_form.h"
 # include "solve.h"
+
+typedef struct			s_piece
+{
+	char				**form;
+	int					x_pos;
+	int					y_pos;
+	int					x_size;
+	int					y_size;
+	struct s_piece		*next;
+	struct s_piece		*prev;
+}						t_piece;
+
+typedef struct			s_head
+{
+	int			size_max;
+	char		lettre;
+	t_piece		*begin;
+}						t_head;
+
+# define BUFF_SIZE 32
 
 #endif
