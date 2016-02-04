@@ -6,7 +6,7 @@
 /*   By: cbossard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 15:37:39 by cbossard          #+#    #+#             */
-/*   Updated: 2016/02/04 16:40:06 by basle-qu         ###   ########.fr       */
+/*   Updated: 2016/02/04 17:18:17 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,28 @@ void	print(t_head *chain)
 {
 	int		i;
 	int		j;
-	char	**tab;
-	t_piece	*tmp;
+	char	**tb;
+	t_piece	*p;
 
-	tab = creat_tab(chain->size_max);
-	tmp = chain->begin;
-	while (tmp)
+	tb = creat_tab(chain->size_max);
+	p = chain->begin;
+	while (p)
 	{
 		i = -1;
-		while (++i < 4 && i + tmp->y_pos < chain->size_max)
+		while (++i < 4 && i + p->y_pos < chain->size_max)
 		{
 			j = -1;
-			if (ft_strchr(tmp->form[i], '#'))
-				while (++j < 4 && j + tmp->x_pos < chain->size_max)
+			if (ft_strchr(p->form[i], '#'))
+				while (++j < 4 && j + p->x_pos < chain->size_max)
 				{
-					if (tmp->form[i][j] != '.')
-						tab[i + tmp->y_pos][j + tmp->x_pos] = chain->lettre + 'A';
+					if (p->form[i][j] != '.')
+						tb[i + p->y_pos][j + p->x_pos] = chain->lettre + 'A';
 				}
 		}
-		tmp = tmp->next;
+		p = p->next;
 		chain->lettre += 1;
 	}
-	print_tab(tab);
+	print_tab(tb);
 }
 
 void	debugg_print_maggle_just_form(t_head *chain)

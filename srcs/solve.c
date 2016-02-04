@@ -6,7 +6,7 @@
 /*   By: cbossard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 14:28:43 by cbossard          #+#    #+#             */
-/*   Updated: 2016/02/04 16:39:36 by basle-qu         ###   ########.fr       */
+/*   Updated: 2016/02/04 16:46:03 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int		to_do_the_coffe(t_head *c, t_piece *p, char **tab)
 	{
 		p->x_pos = -1;
 		while (++p->x_pos <= c->size_max - p->x_size)
-		{
 			if (verif_tab(tab, p))
 			{
 				if (!p->next)
@@ -75,7 +74,6 @@ int		to_do_the_coffe(t_head *c, t_piece *p, char **tab)
 				}
 				free_tab(not_the_same_tab);
 			}
-		}
 	}
 	p->y_pos = 0;
 	p->x_pos = 0;
