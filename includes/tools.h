@@ -13,6 +13,7 @@
 #ifndef TOOLS_H
 #define TOOLS_H
 
+char	**cp_tab(char **tab);
 void	free_tab(char **tab);
 char    **ft_realloc(char **tab, char *line);
 void	ft_error(char *str);

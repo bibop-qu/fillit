@@ -12,13 +12,17 @@
 
 #include "fillit.h"
 
-int penis(char c)
+int		init_size_max(int n_piece)
 {
-	write(1, &c, 1);
-	return (1);
+	int i;
+
+	i = 0;
+	while (i * i <= 4 * n_piece)
+		i++;
+	return (i - 1);
 }
 
-int verif_col(char **tab, int i)
+int 	verif_col(char **tab, int i)
 {
 	int j;
 
@@ -32,124 +36,60 @@ int verif_col(char **tab, int i)
 	return (0);
 }
 
-int	complete_tab(char **tab, t_piece *p)
+int		verif_tab(char **tab, t_piece *p)
 {
-//	ft_putendl("COMPLETE_TAB");
-	int	i;
-	int	j;
-	int	size;
+	//ft_putendl("VERIF_TAB");
+	int		i;
+	int		j;
 
-	size = ft_strlen(tab[0]);
-	if (p->y_pos + p->y_size >= size || p->x_pos + p->x_size >= size)
-		return (0);
-//	print_tab(tab);
-	i = 0;
-	while (i < 4)
+	i = -1;
+	while (++i < p->y_size)
 	{
-		j = 0;
-		if (ft_strchr(p->form[i], '#'))
-			while (j < 4)
+		j = -1;
+		while (++j < p->x_size)
+			if (p->form[i][j] == '#' && tab[i + p->y_pos][j + p->x_pos] == '#')
 			{
-				if (verif_col(p->form, j))
-				{
-//					ft_putendl("bug8");
-/*					ft_putchar('\n');
-					ft_putstr("y_pos: ");
-					ft_putnbr(p->y_pos);
-					ft_putchar('\n');
-					ft_putstr("x_pos: ");
-					ft_putnbr(p->x_pos);
-					ft_putchar('\n');
-					ft_putstr("i: ");
-					ft_putnbr(i);
-					ft_putchar('\n');
-					ft_putstr("j: ");
-					ft_putnbr(j);
-					ft_putchar('\n');
-					ft_putstr("size: ");
-					ft_putnbr(size);
-					ft_putchar('\n');*/
-					if (p->y_pos + i < 0 || p->x_pos + j < 0 || !tab[p->y_pos + i] || p->y_pos + i > size)
-						return (0);
-
-					if (p->form[i][j] == '#' && (tab[p->y_pos + i][p->x_pos + j] == '#' || tab[p->y_pos + i][p->x_pos + j] == '\0'))
-						return (0);
-//					ft_putendl("bug2");
-					if (p->form[i][j] == '#')
-						tab[p->y_pos + i][p->x_pos + j] = '#';
-//					ft_putendl("bug5");
-				}
-				j++;
+				//ft_putendl("END_VERIF_TAB_1");
+				return (0);
 			}
-		i++;
 	}
-//	ft_putendl("WHALALALALALALA");
+	//ft_putendl("END_VERIF_TAB_2");
 	return (1);
 }
 
-int		verif_tab(char **tab, t_piece *first)
+int	to_do_the_coffe(t_head *c, t_piece *p, char **tab)
 {
-//	ft_putendl("VERIF_TAB");
-	while (first)
+	//ft_putendl("COFEE");
+	char	**not_the_same_tab;
+
+	p->y_pos = -1;
+	while (++p->y_pos <= c->size_max - p->y_size)
 	{
-		if (!complete_tab(tab, first))
-			return (0);
-		first = first->prev;
-	}
-//	ft_putendl("WHOLOLOLOLOLOLO");
-	return (1);
-}
-
-char	**result(t_head * chain, t_piece *piece)
-{
-//	ft_putendl("RESULT");
-	char	**tab;
-
-	tab = creat_tab(chain->size_max);
-	if (!verif_tab(tab, piece))
-	{
-//		ft_putendl("bug3");
-		free_tab(tab);
-		return (0);
-	}
-//	ft_putendl("WHULULULULULULULU");
-	return (tab);
-}
-
-char	**to_do_the_coffe(t_head *c, t_piece *p)
-{
-//	ft_putendl("COFEE");
-	int		x_init;
-	int		y_init;
-	char	**tab;
-
-	if (!p)
-		return (0);
-	x_init = p->x_pos;
-	y_init = p->y_pos;
-	while (p->y_pos + p->y_size < c->size_max)
-	{
-		p->x_pos = x_init;
-		while (p->x_pos + p->x_size < c->size_max)
+		p->x_pos = -1;
+		while (++p->x_pos <= c->size_max - p->x_size)
 		{
-			if (p->next)
+			if (verif_tab(tab, p))
 			{
-				tab = to_do_the_coffe(c, p->next);
-				if (tab)
-					return (tab);
+				if (!p->next)
+				{
+					//ft_putendl("END_COFEE_1");
+					return (42);
+				}
+				not_the_same_tab = cp_tab(tab);
+				add_piece_in_tab(not_the_same_tab, p);
+				if (to_do_the_coffe(c, p->next, not_the_same_tab))
+				{
+					free_tab(not_the_same_tab);
+					//ft_putendl("END_COFEE_2");
+					return (42);
+				}
+				free_tab(not_the_same_tab);
 			}
-			else
-			{
-				tab = result(c, p);
-				if (tab)
-					return (tab);
-			}
-			p->x_pos++;
 		}
-		p->y_pos++;
 	}
-	p->y_pos = y_init;
-	p->x_pos = x_init;
+	p->y_pos = 0;
+	p->x_pos = 0;
+	//ft_putendl("END_COFEE_3");
 	return (0);
 }
 
@@ -157,22 +97,27 @@ t_head	*solve(t_head *chain)
 {
 	t_head	*ref;
 	char	**maggle;
+	int		i;
 
 	if (!chain || !chain->begin)
 		return (0);
-	maggle = 0;
-	chain->size_max = 0;
-	while (!maggle)
+	i = 0;
+	chain->size_max = init_size_max(chain_len(chain));
+	while (!i)
 	{
 		ft_putendl("maggle");
-		chain->size_max++;
+		maggle = creat_tab(chain->size_max);
 		ref = cp_chain(chain);
-		maggle = to_do_the_coffe(chain, ref->begin);
-		if (!maggle)
+		i = to_do_the_coffe(chain, ref->begin, maggle);
+		free_tab(maggle);
+		if (!i)
+		{
 			free_chain(ref);
+			chain->size_max++;
+		}
 	}
-//	ft_putendl("WHILILILILLILILILI");
-	free_tab(maggle);
-//	ft_putendl("WHYLYLYLYLYLYLYLYLY");
+	ft_putnbr(chain->size_max);
+	ft_putchar('\n');
+	//ft_putendl("WHILILILILLILILILI");
 	return (ref);
 }

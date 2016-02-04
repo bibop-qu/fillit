@@ -6,11 +6,33 @@
 /*   By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 16:58:57 by basle-qu          #+#    #+#             */
-/*   Updated: 2015/12/11 14:49:08 by basle-qu         ###   ########.fr       */
+/*   Updated: 2016/02/04 15:29:33 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
+
+char	**cp_tab(char **tab)
+{
+	char	**news;
+	int		size;
+	int		i;
+
+	size = ft_strlen(tab[0]);
+	news = (char**)malloc(sizeof(char*) * size + 1);
+	if (!news)
+		ft_error("ERROR: fail alloc memorie\n");
+	news[size] = 0;
+	i = -1;
+	while (++i < size)
+	{
+		news[i] = (char*)malloc(sizeof(char) * size + 1);
+		if (!news[i])
+			ft_error("ERROR: fail alloc memorie\n");
+		ft_strcpy(news[i], tab[i]);
+	}
+	return (news);
+}
 
 void	ft_error(char *str)
 {

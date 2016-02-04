@@ -15,6 +15,7 @@
 
 # include "fillit.h"
 
+void	add_piece_in_tab(char **tab, t_piece *piece);
 t_piece	*creat_piece(t_piece *prev, char **form);
 void	free_piece(t_piece *piece);
 void	cp_pos(t_piece *piece, int x, int y);

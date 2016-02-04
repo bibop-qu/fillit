@@ -14,6 +14,7 @@
 # define SOLVE_H
 
 t_head	*solve(t_head *chain);
-char	**to_do_the_coffe(t_head *c, t_piece *p);
+int	to_do_the_coffe(t_head *c, t_piece *p, char **tab);
+int 	verif_col(char **tab, int i);
 
 #endif

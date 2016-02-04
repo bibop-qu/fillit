@@ -6,7 +6,7 @@
 /*   By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 17:32:04 by basle-qu          #+#    #+#             */
-/*   Updated: 2015/12/11 15:48:10 by basle-qu         ###   ########.fr       */
+/*   Updated: 2016/02/04 15:58:55 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,16 @@ typedef struct		s_head
 	t_piece			*begin;
 }					t_head;
 
-# include <fcntl.h>
+# define BUFF_SIZE 32
+
 # include "libft.h"
 # include "get_next_line.h"
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <fcntl.h>
 # include "chain.h"
 # include "piece_tools.h"
 # include "tools.h"

@@ -12,42 +12,71 @@
 
 #include "fillit.h"
 
+void	add_piece_in_tab(char **tab, t_piece *piece)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	while (++i < piece->y_size)
+	{
+		j = -1;
+		while (++j < piece->x_size)
+			if (piece->form[i][j] == '#')
+				tab[i + piece->y_pos][j + piece->x_pos] = '#';
+	}
+}
+
 void	cp_pos(t_piece *piece, int x, int y)
 {
 	piece->x_pos = x;
 	piece->y_pos = y;
 }
 
+void	init_size(t_piece *piece)
+{
+	int		i;
+
+	piece->x_size = 0;
+	piece->y_size = 0;
+	i = -1;
+	while (++i < 4)
+		if (strchr(piece->form[i], '#'))
+			piece->y_size++;
+	i = -1;
+	while (++i < 4)
+		if (verif_col(piece->form, i))
+			piece->x_size++;
+}
+
 void	init_pos(t_piece *piece)
 {
-	int	i;
-	int j;
+	int		i;
+	int 	j;
 
-	i = 3;
-	while (i >= 0)
+	while(!strchr(piece->form[0], '#'))
 	{
-		if (ft_strchr(piece->form[i], '#'))
-		{
-			piece->y_size++;
-			piece->y_pos = -i;
-		}
-		i--;
+		i = -1;
+		free(piece->form[0]);
+		while (++i < 3)
+			piece->form[i] = piece->form[i + 1];
+		piece->form[3] = (char*)malloc(sizeof(char) * 4 + 1);
+		piece->form[3][4] = 0;
+		i = -1;
+		while (++i < 4)
+			piece->form[3][i] = '.';
 	}
-	i = 3;
-	while (i >= 0)
+	while (!verif_col(piece->form, 0))
 	{
-		j = 0;
-		while (j < 4)
+		i = 0;
+		while (i < 4)
 		{
-			if (piece->form[j][i] == '#')
-			{
-				piece->x_size++;
-				piece->x_pos = -i;
-				j = 4;
-			}
-			j++;
+			j = -1;
+			while (++j < 3)
+				piece->form[i][j] = piece->form[i][j + 1];
+			piece->form[i][3] = '.';
+			i++;
 		}
-		i--;
 	}
 }
 
@@ -87,11 +116,12 @@ t_piece	*creat_piece(t_piece *prev, char **form)
 	news->prev = prev;
 	news->next = 0;
 	creat_form(news, form);
-	news->x_pos = -4;
-	news->y_pos = -4;
-	news->y_size = 0;
-	news->x_size = 0;
+	news->x_pos = 0;
+	news->y_pos = 0;
+	news->x_pos = 0;
+	news->y_pos = 0;
 	init_pos(news);
+	init_size(news);
 	return (news);
 }
 
