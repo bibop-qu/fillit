@@ -6,7 +6,7 @@
 /*   By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 15:47:36 by basle-qu          #+#    #+#             */
-/*   Updated: 2016/02/04 15:41:35 by basle-qu         ###   ########.fr       */
+/*   Updated: 2016/02/04 16:17:09 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_head	*read_file(char *av)
 {
-	t_head *chain;
-	char **tetri;
+	t_head	*chain;
+	char	**tetri;
 
 	chain = NULL;
 	tetri = ft_init_tetri(av);
@@ -39,9 +39,7 @@ int		main(int ac, char **av)
 	if (ac != 2)
 		ft_error("Usage: ./fillit ARG\nWhere ARG is a valid file\n");
 	chain = read_file(av[1]);
-//	debugg_print_maggle_just_form(chain);
 	ref = solve(chain);
 	print(ref);
-//	ft_putendl("Hello World!");
 	return (0);
 }

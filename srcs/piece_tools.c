@@ -6,7 +6,7 @@
 /*   By: cbossard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 12:50:20 by cbossard          #+#    #+#             */
-/*   Updated: 2015/12/11 14:43:07 by basle-qu         ###   ########.fr       */
+/*   Updated: 2016/02/04 16:35:18 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,53 +31,6 @@ void	cp_pos(t_piece *piece, int x, int y)
 {
 	piece->x_pos = x;
 	piece->y_pos = y;
-}
-
-void	init_size(t_piece *piece)
-{
-	int		i;
-
-	piece->x_size = 0;
-	piece->y_size = 0;
-	i = -1;
-	while (++i < 4)
-		if (strchr(piece->form[i], '#'))
-			piece->y_size++;
-	i = -1;
-	while (++i < 4)
-		if (verif_col(piece->form, i))
-			piece->x_size++;
-}
-
-void	init_pos(t_piece *piece)
-{
-	int		i;
-	int 	j;
-
-	while(!strchr(piece->form[0], '#'))
-	{
-		i = -1;
-		free(piece->form[0]);
-		while (++i < 3)
-			piece->form[i] = piece->form[i + 1];
-		piece->form[3] = (char*)malloc(sizeof(char) * 4 + 1);
-		piece->form[3][4] = 0;
-		i = -1;
-		while (++i < 4)
-			piece->form[3][i] = '.';
-	}
-	while (!verif_col(piece->form, 0))
-	{
-		i = 0;
-		while (i < 4)
-		{
-			j = -1;
-			while (++j < 3)
-				piece->form[i][j] = piece->form[i][j + 1];
-			piece->form[i][3] = '.';
-			i++;
-		}
-	}
 }
 
 void	creat_form(t_piece *news, char **form)
@@ -127,7 +80,6 @@ t_piece	*creat_piece(t_piece *prev, char **form)
 
 void	free_piece(t_piece *piece)
 {
-
 	if (piece)
 	{
 		piece->next = 0;

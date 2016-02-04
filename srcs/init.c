@@ -6,12 +6,59 @@
 /*   By: basle-qu <basle-qu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 12:25:06 by basle-qu          #+#    #+#             */
-/*   Updated: 2016/02/04 15:40:15 by basle-qu         ###   ########.fr       */
+/*   Updated: 2016/02/04 16:35:45 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "tools.h"
+
+void	init_pos(t_piece *piece)
+{
+	int	i;
+	int j;
+
+	while (!strchr(piece->form[0], '#'))
+	{
+		i = -1;
+		free(piece->form[0]);
+		while (++i < 3)
+			piece->form[i] = piece->form[i + 1];
+		piece->form[3] = (char*)malloc(sizeof(char) * 4 + 1);
+		piece->form[3][4] = 0;
+		i = -1;
+		while (++i < 4)
+			piece->form[3][i] = '.';
+	}
+	while (!verif_col(piece->form, 0))
+	{
+		i = 0;
+		while (i < 4)
+		{
+			j = -1;
+			while (++j < 3)
+				piece->form[i][j] = piece->form[i][j + 1];
+			piece->form[i][3] = '.';
+			i++;
+		}
+	}
+}
+
+void	init_size(t_piece *piece)
+{
+	int		i;
+
+	piece->x_size = 0;
+	piece->y_size = 0;
+	i = -1;
+	while (++i < 4)
+		if (strchr(piece->form[i], '#'))
+			piece->y_size++;
+	i = -1;
+	while (++i < 4)
+		if (verif_col(piece->form, i))
+			piece->x_size++;
+}
 
 char	**ft_clear_tetri(char **tetri)
 {
@@ -32,9 +79,9 @@ char	**ft_clear_tetri(char **tetri)
 
 char	**ft_init_tetri(char *av)
 {
-	int fd;
-	char **tab;
-	char *line;
+	int		fd;
+	char	**tab;
+	char	*line;
 
 	tab = NULL;
 	line = NULL;

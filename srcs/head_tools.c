@@ -6,13 +6,13 @@
 /*   By: cbossard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 12:32:48 by cbossard          #+#    #+#             */
-/*   Updated: 2015/12/11 14:29:30 by basle-qu         ###   ########.fr       */
+/*   Updated: 2016/02/04 16:16:34 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_head	*creat_head()
+t_head	*creat_head(void)
 {
 	t_head	*news;
 

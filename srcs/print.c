@@ -6,7 +6,7 @@
 /*   By: cbossard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 15:37:39 by cbossard          #+#    #+#             */
-/*   Updated: 2015/12/11 15:46:22 by basle-qu         ###   ########.fr       */
+/*   Updated: 2016/02/04 16:40:06 by basle-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	print_tab(char **tab)
 
 void	print(t_head *chain)
 {
-	ft_putchar('\n');
 	int		i;
 	int		j;
 	char	**tab;
@@ -58,7 +57,7 @@ void	debugg_print_maggle_just_form(t_head *chain)
 	t_piece *tmp;
 
 	tmp = chain->begin;
-	while(tmp)
+	while (tmp)
 	{
 		write(1, "Y: ", 3);
 		ft_putnbr(tmp->y_pos);
