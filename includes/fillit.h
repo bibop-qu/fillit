@@ -13,17 +13,15 @@
 #ifndef FILLIT_H
 # define FILLIT_H
 
-typedef struct	s_piece t_piece;
-typedef struct	s_head t_head;
-
-# include "libft.h"
-# include "get_next_line.h"
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <fcntl.h>
+# include "libft.h"
+# include "get_next_line.h"
+# include "struct.h"
 # include "chain.h"
 # include "piece_tools.h"
 # include "tools.h"
@@ -33,23 +31,5 @@ typedef struct	s_head t_head;
 # include "print.h"
 # include "verif_form.h"
 # include "solve.h"
-
-struct			s_piece
-{
-	char				**form;
-	int					x_pos;
-	int					y_pos;
-	int					x_size;
-	int					y_size;
-	struct s_piece		*next;
-	struct s_piece		*prev;
-};
-
-struct			s_head
-{
-	int			size_max;
-	char		lettre;
-	t_piece		*begin;
- };
 
 #endif
